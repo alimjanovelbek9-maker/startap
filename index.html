@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="uz" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qur'oni Karim & Duolar Platformasi</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind Custom Colors & Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            950: '#1a0f0a',
+                            900: '#2c1810',
+                            800: '#3d2317',
+                            700: '#543122',
+                        },
+                        gold: {
+                            100: '#fef3c7',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        }
+                    },
+                    fontFamily: {
+                        arabic: ['Amiri', 'serif'],
+                        title: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Islamic Pattern Background Effect */
+        body {
+            background-color: #1a0f0a;
+            background-image: radial-gradient(#d97706 0.75px, transparent 0.75px), radial-gradient(#d97706 0.75px, #1a0f0a 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            color: #f3f4f6;
+        }
+
+        /* Gold Gradient Text */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #fff3c4 0%, #f59e0b 50%, #b45309 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glassmorphism Effect */
+        .glass-card {
+            background: rgba(44, 24, 16, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(217, 119, 6, 0.25);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(245, 158, 11, 0.6);
+            box-shadow: 0 10px 30px -10px rgba(217, 119, 6, 0.3);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a0f0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b45309;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f59e0b;
+        }
+
+        /* Keyframe Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.3); }
+            50% { box-shadow: 0 0 35px rgba(245, 158, 11, 0.7); }
+        }
+        .pulse-gold {
+            animation: pulseGlow 3s infinite;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-gold-500 selection:text-black">
+
+    <!-- WELCOME / INTRO SCREEN OVERLAY -->
+    <div id="welcomeScreen" class="fixed inset-0 z-50 bg-brown-950 flex flex-col items-center justify-center text-center p-6 transition-all duration-700">
+        <div class="max-w-2xl mx-auto space-y-6 animate-float">
+            <!-- Decorative Icon -->
+            <div class="w-24 h-24 mx-auto rounded-full bg-brown-900/80 border-2 border-gold-500/50 flex items-center justify-center text-gold-400 text-4xl shadow-2xl pulse-gold">
+                <i class="fas fa-quran"></i>
+            </div>
+
+            <!-- Arabic Welcome -->
+            <h1 class="font-arabic text-5xl md:text-6xl text-gold-gradient font-bold leading-relaxed">
+                أَهْلًا وَسَهْلًا وَمَرْحَبًا بِكُمْ
+            </h1>
+
+            <!-- Uzbek Welcome -->
+            <h2 class="font-title text-2xl md:text-3xl text-gold-300 font-semibold tracking-wider uppercase">
+                Qur'oni Karim & Ma'rifat Maskaniga Xush Kelibsiz
+            </h2>
+
+            <p class="text-slate-300 text-sm md:text-base leading-relaxed max-w-lg mx-auto font-light">
+                Ushbu platforma orqali siz Qur'oni Karimning 114 ta surasi, 6236 ta oyatini arabcha, lotincha va o'zbekcha tarjimalari bilan tinglab, o'rganishingiz hamda namoz va tahorat duolaridan bahramand bo'lishingiz mumkin.
+            </p>
+
+            <!-- Large Start Button -->
+            <div class="pt-6">
+                <button onclick="startApp()" class="w-full sm:w-80 py-4 px-8 rounded-full bg-gradient-to-r from-gold-600 via-gold-500 to-gold-700 text-brown-950 font-bold text-lg tracking-wider uppercase shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 mx-auto pulse-gold">
+                    <span>Boshlash</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN APP CONTENT (Hidden initially) -->
+    <div id="mainApp" class="hidden flex-col min-h-screen">
+
+        <!-- HEADER / NAVIGATION -->
+        <header class="sticky top-0 z-40 bg-brown-950/90 backdrop-blur-md border-b border-gold-600/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+                
+                <!-- Logo -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('surahs')">
+                    <div class="w-10 h-10 rounded-xl bg-gold-500/20 border border-gold-500/50 flex items-center justify-center text-gold-400 text-xl">
+                        <i class="fas fa-quran"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-title text-lg font-bold text-gold-gradient tracking-wide">QUR'ONI KARIM</h1>
+                        <p class="text-[10px] text-gold-400/70 tracking-widest uppercase">114 Sura • 6236 Oyat</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="flex flex-wrap justify-center gap-2 bg-brown-900/60 p-1.5 rounded-2xl border border-gold-600/20">
+                    <button id="tab-surahs" onclick="switchTab('surahs')" class="tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition-all duration-300 bg-gold-500 text-brown-950">
+                        <i class="fas fa-book-open mr-1.5"></i> Suralar
+                    </button>
+                    <button id="tab-namaz" onclick="switchTab('namaz')" class="tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition-all duration-300 text-slate-300 hover:text-gold-300">
+                        <i class="fas fa-hands-praying mr-1.5"></i> Namoz Duolari
+                    </button>
+                    <button id="tab-tahorat" onclick="switchTab('tahorat')" class="tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition-all duration-300 text-slate-300 hover:text-gold-300">
+                        <i class="fas fa-faucet-drip mr-1.5"></i> Tahorat Duolari
+                    </button>
+                    <button id="tab-daily" onclick="switchTab('daily')" class="tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition-all duration-300 text-slate-300 hover:text-gold-300">
+                        <i class="fas fa-heart mr-1.5"></i> Kunlik Duolar
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- MAIN SECTION CONTAINER -->
+        <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+            <!-- TAB 1: SURAHS SECTION -->
+            <section id="sec-surahs" class="space-y-6">
+                <!-- Search & Filters -->
+                <div class="glass-card p-4 md:p-6 rounded-3xl space-y-4">
+                    <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
+                        <div class="relative w-full md:w-96">
+                            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gold-500"></i>
+                            <input type="text" id="searchInput" oninput="filterSurahs()" placeholder="Sura nomi, raqami yoki ma'nosi..." class="w-full pl-11 pr-4 py-3 rounded-xl bg-brown-950/80 border border-gold-600/30 text-slate-100 placeholder-slate-400 focus:outline-none focus:border-gold-500 text-sm">
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-gold-300">
+                            <span class="bg-brown-900 px-3 py-1.5 rounded-lg border border-gold-600/20"><i class="fas fa-kaaba mr-1 text-gold-500"></i> Makkiy: 86</span>
+                            <span class="bg-brown-900 px-3 py-1.5 rounded-lg border border-gold-600/20"><i class="fas fa-mosque mr-1 text-gold-500"></i> Madaniy: 28</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Surah Cards Grid -->
+                <div id="surahGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                    <!-- Surah Items Dynamic Render -->
+                </div>
+            </section>
+
+            <!-- TAB 2: NAMOZ DUOLARI -->
+            <section id="sec-namaz" class="hidden space-y-6">
+                <div class="text-center max-w-xl mx-auto mb-8">
+                    <h2 class="text-2xl font-bold text-gold-gradient font-title">NAMOZDA O'QILADIGAN DUOLAR</h2>
+                    <p class="text-xs text-slate-400 mt-1">Har bir namozda o'qiladigan zaruriy sura va tasbehlar</p>
+                </div>
+                <div id="namazDuasContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+            </section>
+
+            <!-- TAB 3: TAHORAT DUOLARI -->
+            <section id="sec-tahorat" class="hidden space-y-6">
+                <div class="text-center max-w-xl mx-auto mb-8">
+                    <h2 class="text-2xl font-bold text-gold-gradient font-title">TAHORAT DUOLARI</h2>
+                    <p class="text-xs text-slate-400 mt-1">Tahorat olish tartibida aytiladigan duo va zikrlar</p>
+                </div>
+                <div id="tahoratDuasContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+            </section>
+
+            <!-- TAB 4: KUNLIK DUOLAR -->
+            <section id="sec-daily" class="hidden space-y-6">
+                <div class="text-center max-w-xl mx-auto mb-8">
+                    <h2 class="text-2xl font-bold text-gold-gradient font-title">KUNLIK VA TURT HIKMATLI DUOLAR</h2>
+                    <p class="text-xs text-slate-400 mt-1">Kundalik hayotda o'qilishi tavsiya etilgan ma'sur duolar</p>
+                </div>
+                <div id="dailyDuasContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="bg-brown-950 border-t border-gold-600/20 py-6 text-center text-xs text-slate-400">
+            <p class="font-arabic text-base text-gold-400 mb-2">رَبَّنَا تَقَبَّلْ مِنَّا ۖ إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ</p>
+            <p>&copy; 2026 Qur'oni Karim Ilmiy Manbasi. Barcha huquqlar himoyalangan.</p>
+        </footer>
+
+    </div>
+
+    <!-- SURAH CONTENT MODAL (114 SURAH FULL AYAH VIEWER) -->
+    <div id="surahModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex-col justify-between transition-all duration-300">
+        <!-- Modal Header -->
+        <div class="bg-brown-950 border-b border-gold-600/30 p-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span id="modalSurahNum" class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500 text-gold-400 flex items-center justify-center font-bold text-sm">1</span>
+                <div>
+                    <h2 id="modalSurahName" class="text-lg font-bold text-gold-gradient">Sura Nomi</h2>
+                    <p id="modalSurahInfo" class="text-xs text-slate-400">Makka • 7 Oyat</p>
+                </div>
+            </div>
+            <button onclick="closeSurahModal()" class="w-10 h-10 rounded-full bg-brown-900 border border-gold-600/30 text-gold-400 hover:bg-gold-500 hover:text-brown-950 transition-all flex items-center justify-center text-lg">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Audio Player Bar -->
+        <div class="bg-brown-900/90 border-b border-gold-600/20 p-3 px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+                <button id="audioPlayBtn" onclick="toggleAudio()" class="w-10 h-10 rounded-full bg-gold-500 text-brown-950 flex items-center justify-center text-base font-bold hover:scale-105 transition-all">
+                    <i class="fas fa-play" id="audioPlayIcon"></i>
+                </button>
+                <div>
+                    <p class="text-xs font-semibold text-gold-300">Sura Audiosini Tinglash</p>
+                    <p class="text-[10px] text-slate-400">Qori: Mishary Rashid Alafasy</p>
+                </div>
+            </div>
+            <audio id="surahAudioPlayer" class="w-full sm:w-80 h-8"></audio>
+        </div>
+
+        <!-- Modal Body: Ayahs List -->
+        <div id="modalAyahsContainer" class="flex-grow overflow-y-auto p-4 md:p-8 space-y-6">
+            <!-- Dynamic Ayah Content -->
+            <div class="text-center py-12 text-gold-400">
+                <i class="fas fa-spinner fa-spin text-3xl mb-3"></i>
+                <p class="text-sm">Oyatlar yuklanmoqda...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Surahs Database Meta (114 Surahs list)
+        const surahNames = [
+            {n:1, uz:"Fotiha", ar:"الفاتحة", en:"Al-Fatihah", t:"Makka", c:7, m:"Ochuvchi"},
+            {n:2, uz:"Baqara", ar:"البقرة", en:"Al-Baqarah", t:"Madina", c:286, m:"Sigir"},
+            {n:3, uz:"Oli Imron", ar:"آل عمران", en:"Ali 'Imran", t:"Madina", c:200, m:"Imron oilasi"},
+            {n:4, uz:"Niso", ar:"النساء", en:"An-Nisa", t:"Madina", c:176, m:"Ayollar"},
+            {n:5, uz:"Moida", ar:"المائدة", en:"Al-Ma'idah", t:"Madina", c:120, m:"Dasturxon"},
+            {n:6, uz:"An'om", ar:"الأنعام", en:"Al-An'am", t:"Makka", c:165, m:"Chorvalar"},
+            {n:7, uz:"A'rof", ar:"الأعراف", en:"Al-A'raf", t:"Makka", c:206, m:"Tuslar"},
+            {n:8, uz:"Anfol", ar:"الأنفال", en:"Al-Anfal", t:"Madina", c:75, m:"O'ljalar"},
+            {n:9, uz:"Tavba", ar:"التوبة", en:"At-Tawbah", t:"Madina", c:129, m:"Tavba"},
+            {n:10, uz:"Yunus", ar:"يونس", en:"Yunus", t:"Makka", c:109, m:"Yunus a.s."},
+            {n:11, uz:"Hud", ar:"هود", en:"Hud", t:"Makka", c:123, m:"Hud a.s."},
+            {n:12, uz:"Yusuf", ar:"يوسف", en:"Yusuf", t:"Makka", c:111, m:"Yusuf a.s."},
+            {n:13, uz:"Ra'd", ar:"الرعد", en:"Ar-Ra'd", t:"Madina", c:43, m:"Momaqaldiroq"},
+            {n:14, uz:"Ibrohim", ar:"إبراهيم", en:"Ibrahim", t:"Makka", c:52, m:"Ibrohim a.s."},
+            {n:15, uz:"Hijr", ar:"الحجر", en:"Al-Hijr", t:"Makka", c:99, m:"Toshli vodiy"},
+            {n:16, uz:"Nahl", ar:"النحل", en:"An-Nahl", t:"Makka", c:128, m:"Asalarilar"},
+            {n:17, uz:"Isro", ar:"الإسراء", en:"Al-Isra", t:"Makka", c:111, m:"Tungi sayr"},
+            {n:18, uz:"Kahf", ar:"الكهف", en:"Al-Kahf", t:"Makka", c:110, m:"G'or"},
+            {n:19, uz:"Maryam", ar:"مريم", en:"Maryam", t:"Makka", c:98, m:"Maryam a.s."},
+            {n:20, uz:"Toha", ar:"طه", en:"Taha", t:"Makka", c:135, m:"Toha"},
+            {n:21, uz:"Anbiyo", ar:"الأنبياء", en:"Al-Anbiya", t:"Makka", c:112, m:"Payg'ambarlar"},
+            {n:22, uz:"Haj", ar:"الحج", en:"Al-Hajj", t:"Madina", c:78, m:"Haj ziyorati"},
+            {n:23, uz:"Mu'minun", ar:"المؤمنون", en:"Al-Mu'minun", t:"Makka", c:118, m:"Mo'minlar"},
+            {n:24, uz:"Nur", ar:"النور", en:"An-Nur", t:"Madina", c:64, m:"Nur"},
+            {n:25, uz:"Furqon", ar:"الفرقان", en:"Al-Furqan", t:"Makka", c:77, m:"Farqlovchi"},
+            {n:26, uz:"Shuaro", ar:"الشعراء", en:"Ash-Shu'ara", t:"Makka", c:227, m:"Shoirlar"},
+            {n:27, uz:"Naml", ar:"النمل", en:"An-Naml", t:"Makka", c:93, m:"Chumolilar"},
+            {n:28, uz:"Qasas", ar:"القصص", en:"Al-Qasas", t:"Makka", c:88, m:"Qissalar"},
+            {n:29, uz:"Ankabut", ar:"العنكبوت", en:"Al-'Ankabut", t:"Makka", c:69, m:"O'rgimchak"},
+            {n:30, uz:"Rum", ar:"الروم", en:"Ar-Rum", t:"Makka", c:60, m:"Rumlilar"},
+            {n:31, uz:"Luqmon", ar:"لقمان", en:"Luqman", t:"Makka", c:34, m:"Luqmon a.s."},
+            {n:32, uz:"Sajda", ar:"السجدة", en:"As-Sajdah", t:"Makka", c:30, m:"Sajda"},
+            {n:33, uz:"Ahzob", ar:"الأحزاب", en:"Al-Ahzab", t:"Madina", c:73, m:"Guruhlar"},
+            {n:34, uz:"Sabo", ar:"سبإ", en:"Saba", t:"Makka", c:54, m:"Sabo qabilasi"},
+            {n:35, uz:"Fotir", ar:"فاطر", en:"Fatir", t:"Makka", c:45, m:"Yaratuvchi"},
+            {n:36, uz:"Yosin", ar:"يس", en:"Ya-Sin", t:"Makka", c:83, m:"Yosin"},
+            {n:37, uz:"Saffot", ar:"الصافات", en:"As-Saffat", t:"Makka", c:182, m:"Saf tortganlar"},
+            {n:38, uz:"Sod", ar:"ص", en:"Sad", t:"Makka", c:88, m:"Sod harfi"},
+            {n:39, uz:"Zumar", ar:"الزمر", en:"Az-Zumar", t:"Makka", c:75, m:"Guruh-guruhlar"},
+            {n:40, uz:"G'ofir", ar:"غافر", en:"Ghafir", t:"Makka", c:85, m:"Kechiruvchi"},
+            {n:41, uz:"Fussilat", ar:"فصلت", en:"Fussilat", t:"Makka", c:54, m:"Batafsil tushuntirilgan"},
+            {n:42, uz:"Sho'ro", ar:"الشورى", en:"Ash-Shura", t:"Makka", c:53, m:"Maslahat"},
+            {n:43, uz:"Zuxruf", ar:"الزخرف", en:"Az-Zukhruf", t:"Makka", c:89, m:"Zeb-ziynat"},
+            {n:44, uz:"Duxon", ar:"الدخان", en:"Ad-Dukhan", t:"Makka", c:59, m:"Tutun"},
+            {n:45, uz:"Josiya", ar:"الجاثية", en:"Al-Jathiyah", t:"Makka", c:37, m:"Tiz cho'kuvchilar"},
+            {n:46, uz:"Ahqof", ar:"الأحقاف", en:"Al-Ahqaf", t:"Makka", c:35, m:"Qumtepalar"},
+            {n:47, uz:"Muhammad", ar:"محمد", en:"Muhammad", t:"Madina", c:38, m:"Muhammad s.a.v."},
+            {n:48, uz:"Fath", ar:"الفتح", en:"Al-Fath", t:"Madina", c:29, m:"G'alaba"},
+            {n:49, uz:"Hujurot", ar:"الحجرات", en:"Al-Hujurat", t:"Madina", c:18, m:"Hujralar"},
+            {n:50, uz:"Qof", ar:"ق", en:"Qaf", t:"Makka", c:45, m:"Qof harfi"},
+            {n:51, uz:"Zoriyot", ar:"الذاريات", en:"Adh-Dhariyat", t:"Makka", c:60, m:"Shamol-uchuruvchilar"},
+            {n:52, uz:"Tur", ar:"الطور", en:"At-Tur", t:"Makka", c:49, m:"Tur tog'i"},
+            {n:53, uz:"Najm", ar:"النجم", en:"An-Najm", t:"Makka", c:62, m:"Yulduz"},
+            {n:54, uz:"Qamar", ar:"القمر", en:"Al-Qamar", t:"Makka", c:55, m:"Oymama"},
+            {n:55, uz:"Rahmon", ar:"الرحمن", en:"Ar-Rahman", t:"Madina", c:78, m:"O'ta mehribon"},
+            {n:56, uz:"Voqea", ar:"الواقعة", en:"Al-Waqi'ah", t:"Makka", c:96, m:"Voqea / Qiyomat"},
+            {n:57, uz:"Hadid", ar:"الحديد", en:"Al-Hadid", t:"Madina", c:29, m:"Temir"},
+            {n:58, uz:"Mujodala", ar:"المجادلة", en:"Al-Mujadila", t:"Madina", c:22, m:"Munozara qiluvchi"},
+            {n:59, uz:"Hashr", ar:"الحشر", en:"Al-Hashr", 
